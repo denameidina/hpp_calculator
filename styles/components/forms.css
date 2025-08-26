@@ -1,0 +1,443 @@
+/* Form Component Styles */
+
+.form {
+  width: 100%;
+}
+
+/* Form Sections */
+.form__section {
+  margin-bottom: var(--spacing-xl);
+  border: 1px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  padding: var(--spacing-lg);
+  background-color: var(--color-background-tertiary);
+  transition: border-color var(--transition-fast);
+}
+
+.form__section:hover {
+  border-color: var(--color-border-dark);
+}
+
+.form__section:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Form Legend */
+.form__legend {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-md);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: 0 var(--spacing-sm);
+  background-color: var(--color-background-secondary);
+  border-radius: var(--border-radius-md);
+  border: 1px solid var(--color-border);
+}
+
+.form__legend i {
+  color: var(--color-primary);
+  font-size: var(--font-size-base);
+}
+
+/* Form Groups */
+.form__group {
+  margin-bottom: var(--spacing-lg);
+}
+
+.form__group:last-child {
+  margin-bottom: 0;
+}
+
+/* Form Labels */
+.form__label {
+  display: block;
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-text);
+  margin-bottom: var(--spacing-sm);
+  line-height: var(--line-height-normal);
+}
+
+/* Required Indicator */
+.form__required {
+  color: var(--color-error);
+  font-weight: var(--font-weight-bold);
+  margin-left: var(--spacing-xs);
+}
+
+/* Form Inputs */
+.form__input {
+  width: 100%;
+  padding: var(--spacing-md);
+  border: 2px solid var(--color-border);
+  border-radius: var(--border-radius-lg);
+  font-size: var(--font-size-base);
+  font-family: var(--font-family-body);
+  color: var(--color-text);
+  background-color: var(--color-background-secondary);
+  transition: all var(--transition-fast);
+  appearance: none;
+}
+
+.form__input::placeholder {
+  color: var(--color-text-muted);
+  opacity: 1;
+}
+
+.form__input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  transform: translateY(-1px);
+}
+
+.form__input:hover:not(:focus) {
+  border-color: var(--color-border-dark);
+}
+
+/* Input States */
+.form__input:valid {
+  border-color: var(--color-success);
+}
+
+.form__input:invalid:not(:placeholder-shown) {
+  border-color: var(--color-error);
+}
+
+.form__input:disabled {
+  background-color: var(--color-background-tertiary);
+  color: var(--color-text-muted);
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+/* Input Sizes */
+.form__input--small {
+  padding: var(--spacing-sm);
+  font-size: var(--font-size-sm);
+}
+
+.form__input--large {
+  padding: var(--spacing-lg);
+  font-size: var(--font-size-lg);
+}
+
+/* Number Input Specific Styles */
+input[type="number"].form__input {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Remove spinner arrows in WebKit browsers */
+input[type="number"].form__input::-webkit-outer-spin-button,
+input[type="number"].form__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Remove spinner arrows in Firefox */
+input[type="number"].form__input {
+  -moz-appearance: textfield;
+}
+
+/* Textarea */
+.form__textarea {
+  min-height: 120px;
+  resize: vertical;
+  line-height: var(--line-height-normal);
+}
+
+/* Select */
+.form__select {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+  background-position: right var(--spacing-sm) center;
+  background-repeat: no-repeat;
+  background-size: 1.5em 1.5em;
+  padding-right: var(--spacing-2xl);
+  cursor: pointer;
+}
+
+.form__select:focus {
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3e%3cpath stroke='%233b82f6' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='m6 8 4 4 4-4'/%3e%3c/svg%3e");
+}
+
+/* Checkbox and Radio */
+.form__checkbox,
+.form__radio {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: 2px solid var(--color-border);
+  background-color: var(--color-background-secondary);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.form__checkbox {
+  border-radius: var(--border-radius-sm);
+}
+
+.form__radio {
+  border-radius: 50%;
+}
+
+.form__checkbox:checked,
+.form__radio:checked {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.form__checkbox:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m13.854 3.646-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 9.293l6.646-6.647a.5.5 0 0 1 .708.708z'/%3e%3c/svg%3e");
+}
+
+.form__radio:checked {
+  background-image: url("data:image/svg+xml,%3csvg viewBox='0 0 16 16' fill='white' xmlns='http://www.w3.org/2000/svg'%3e%3ccircle cx='8' cy='8' r='3'/%3e%3c/svg%3e");
+}
+
+/* Form Help Text */
+.form__help {
+  font-size: var(--font-size-sm);
+  color: var(--color-text-muted);
+  margin-top: var(--spacing-xs);
+  line-height: var(--line-height-normal);
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.form__help::before {
+  content: "💡";
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+/* Form Error Messages */
+.form__error {
+  font-size: var(--font-size-sm);
+  color: var(--color-error);
+  margin-top: var(--spacing-xs);
+  line-height: var(--line-height-normal);
+  display: none;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.form__error::before {
+  content: "⚠️";
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.form__error:not(:empty) {
+  display: flex;
+}
+
+/* Form Success Messages */
+.form__success {
+  font-size: var(--font-size-sm);
+  color: var(--color-success);
+  margin-top: var(--spacing-xs);
+  line-height: var(--line-height-normal);
+  display: none;
+  align-items: flex-start;
+  gap: var(--spacing-xs);
+}
+
+.form__success::before {
+  content: "✅";
+  font-size: var(--font-size-sm);
+  flex-shrink: 0;
+  margin-top: 1px;
+}
+
+.form__success:not(:empty) {
+  display: flex;
+}
+
+/* Form Actions */
+.form__actions {
+  display: flex;
+  gap: var(--spacing-md);
+  justify-content: flex-end;
+  align-items: center;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Input Groups */
+.form__input-group {
+  display: flex;
+  align-items: stretch;
+  border-radius: var(--border-radius-lg);
+  overflow: hidden;
+  border: 2px solid var(--color-border);
+  transition: border-color var(--transition-fast);
+}
+
+.form__input-group:focus-within {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form__input-group .form__input {
+  border: none;
+  border-radius: 0;
+  flex: 1;
+}
+
+.form__input-group .form__input:focus {
+  box-shadow: none;
+}
+
+.form__input-addon {
+  background-color: var(--color-background-tertiary);
+  border: none;
+  padding: var(--spacing-md);
+  color: var(--color-text-muted);
+  font-size: var(--font-size-base);
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.form__input-addon--prefix {
+  border-right: 1px solid var(--color-border);
+}
+
+.form__input-addon--suffix {
+  border-left: 1px solid var(--color-border);
+}
+
+/* File Input */
+.form__file {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+}
+
+.form__file input[type="file"] {
+  position: absolute;
+  left: -9999px;
+}
+
+.form__file-label {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-md);
+  border: 2px dashed var(--color-border);
+  border-radius: var(--border-radius-lg);
+  background-color: var(--color-background-secondary);
+  color: var(--color-text);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.form__file-label:hover {
+  border-color: var(--color-primary);
+  background-color: rgba(59, 130, 246, 0.05);
+}
+
+.form__file input[type="file"]:focus + .form__file-label {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+/* Form Validation States */
+.form__group--error .form__input {
+  border-color: var(--color-error);
+}
+
+.form__group--error .form__label {
+  color: var(--color-error);
+}
+
+.form__group--success .form__input {
+  border-color: var(--color-success);
+}
+
+.form__group--success .form__label {
+  color: var(--color-success);
+}
+
+/* Responsive Forms */
+@media (max-width: 768px) {
+  .form__section {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-lg);
+  }
+  
+  .form__legend {
+    font-size: var(--font-size-base);
+    flex-wrap: wrap;
+  }
+  
+  .form__actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .form__input-group {
+    flex-direction: column;
+  }
+  
+  .form__input-addon--prefix,
+  .form__input-addon--suffix {
+    border: none;
+    border-bottom: 1px solid var(--color-border);
+  }
+}
+
+@media (max-width: 640px) {
+  .form__section {
+    padding: var(--spacing-sm);
+  }
+  
+  .form__input {
+    padding: var(--spacing-sm);
+  }
+  
+  .form__input--large {
+    padding: var(--spacing-md);
+  }
+}
+
+/* High Contrast Mode */
+@media (prefers-contrast: high) {
+  .form__input {
+    border-width: 3px;
+  }
+  
+  .form__input:focus {
+    box-shadow: 0 0 0 3px var(--color-primary);
+  }
+  
+  .form__section {
+    border-width: 2px;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .form__section {
+    border: 1px solid #000;
+    background: transparent;
+    break-inside: avoid;
+  }
+  
+  .form__input {
+    border: 1px solid #000;
+    background: transparent;
+  }
+  
+  .form__actions {
+    display: none;
+  }
+}

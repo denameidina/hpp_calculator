@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Kalkulator HPP - Menghitung Harga Pokok Penjualan dengan mudah dan akurat untuk semua usia">
+    <meta name="keywords" content="HPP, harga pokok penjualan, kalkulator, bisnis, akuntansi">
+    <title>Kalkulator HPP - Hitung Harga Pokok Penjualan</title>
+    
+    <!-- Preconnect to external resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="styles/base/variables.css">
+    <link rel="stylesheet" href="styles/base/reset.css">
+    <link rel="stylesheet" href="styles/base/typography.css">
+    <link rel="stylesheet" href="styles/layout/header.css">
+    <link rel="stylesheet" href="styles/layout/main.css">
+    <link rel="stylesheet" href="styles/layout/footer.css">
+    <link rel="stylesheet" href="styles/components/calculator.css">
+    <link rel="stylesheet" href="styles/components/forms.css">
+    <link rel="stylesheet" href="styles/components/buttons.css">
+    <link rel="stylesheet" href="styles/components/results.css">
+    <link rel="stylesheet" href="styles/utilities/spacing.css">
+    <link rel="stylesheet" href="styles/utilities/responsive.css">
+</head>
+<body>
+    <!-- Skip to main content link for accessibility -->
+    <a href="#main-content" class="skip-link">Skip to main content</a>
+    
+    <!-- Header -->
+    <header class="header" role="banner">
+        <div class="container">
+            <div class="header__content">
+                <div class="header__brand">
+                    <i class="fas fa-calculator header__icon" aria-hidden="true"></i>
+                    <h1 class="header__title">Kalkulator HPP</h1>
+                </div>
+                <nav class="header__nav" role="navigation" aria-label="Main navigation">
+                    <div class="header__controls">
+                        <button type="button" class="btn btn--icon theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+                            <i class="fas fa-moon" aria-hidden="true"></i>
+                        </button>
+                        <button type="button" class="btn btn--icon help-toggle" aria-label="Toggle help" title="Show help">
+                            <i class="fas fa-question-circle" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main-content" class="main" role="main">
+        <div class="container">
+            <!-- Introduction Section -->
+            <section class="intro" aria-labelledby="intro-heading">
+                <h2 id="intro-heading" class="intro__title">Hitung Harga Pokok Penjualan dengan Mudah</h2>
+                <p class="intro__description">
+                    Kalkulator HPP membantu Anda menghitung harga pokok penjualan produk dengan akurat. 
+                    Masukkan semua komponen biaya dan dapatkan hasil perhitungan yang detail.
+                </p>
+            </section>
+
+            <!-- Calculator Section -->
+            <section class="calculator" aria-labelledby="calculator-heading">
+                <div class="calculator__grid">
+                    <!-- Input Form -->
+                    <div class="calculator__input">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3 id="calculator-heading" class="card__title">
+                                    <i class="fas fa-edit" aria-hidden="true"></i>
+                                    Input Data Biaya
+                                </h3>
+                                <p class="card__subtitle">Masukkan semua komponen biaya produksi</p>
+                            </div>
+                            <div class="card__body">
+                                <form id="hpp-form" class="form" novalidate>
+                                    <!-- Direct Materials Section -->
+                                    <fieldset class="form__section">
+                                        <legend class="form__legend">
+                                            <i class="fas fa-boxes" aria-hidden="true"></i>
+                                            Bahan Baku Langsung
+                                            <button type="button" class="help-btn" data-tooltip="Biaya bahan yang langsung digunakan dalam produksi" aria-label="Help for direct materials">
+                                                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </legend>
+                                        <div class="form__group">
+                                            <label for="direct-materials" class="form__label">
+                                                Biaya Bahan Baku (Rp)
+                                                <span class="form__required" aria-label="Required">*</span>
+                                            </label>
+                                            <input 
+                                                type="number" 
+                                                id="direct-materials" 
+                                                name="directMaterials" 
+                                                class="form__input" 
+                                                placeholder="0"
+                                                min="0"
+                                                step="0.01"
+                                                required
+                                                aria-describedby="direct-materials-error direct-materials-help"
+                                            >
+                                            <div id="direct-materials-help" class="form__help">
+                                                Contoh: bahan utama, kemasan, label
+                                            </div>
+                                            <div id="direct-materials-error" class="form__error" role="alert"></div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Direct Labor Section -->
+                                    <fieldset class="form__section">
+                                        <legend class="form__legend">
+                                            <i class="fas fa-users" aria-hidden="true"></i>
+                                            Tenaga Kerja Langsung
+                                            <button type="button" class="help-btn" data-tooltip="Upah pekerja yang terlibat langsung dalam produksi" aria-label="Help for direct labor">
+                                                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </legend>
+                                        <div class="form__group">
+                                            <label for="direct-labor" class="form__label">
+                                                Biaya Tenaga Kerja (Rp)
+                                                <span class="form__required" aria-label="Required">*</span>
+                                            </label>
+                                            <input 
+                                                type="number" 
+                                                id="direct-labor" 
+                                                name="directLabor" 
+                                                class="form__input" 
+                                                placeholder="0"
+                                                min="0"
+                                                step="0.01"
+                                                required
+                                                aria-describedby="direct-labor-error direct-labor-help"
+                                            >
+                                            <div id="direct-labor-help" class="form__help">
+                                                Contoh: gaji operator, bonus produksi
+                                            </div>
+                                            <div id="direct-labor-error" class="form__error" role="alert"></div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Manufacturing Overhead Section -->
+                                    <fieldset class="form__section">
+                                        <legend class="form__legend">
+                                            <i class="fas fa-industry" aria-hidden="true"></i>
+                                            Biaya Overhead Pabrik
+                                            <button type="button" class="help-btn" data-tooltip="Biaya produksi tidak langsung seperti listrik, sewa, depresiasi" aria-label="Help for manufacturing overhead">
+                                                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </legend>
+                                        <div class="form__group">
+                                            <label for="overhead" class="form__label">
+                                                Biaya Overhead (Rp)
+                                                <span class="form__required" aria-label="Required">*</span>
+                                            </label>
+                                            <input 
+                                                type="number" 
+                                                id="overhead" 
+                                                name="manufacturingOverhead" 
+                                                class="form__input" 
+                                                placeholder="0"
+                                                min="0"
+                                                step="0.01"
+                                                required
+                                                aria-describedby="overhead-error overhead-help"
+                                            >
+                                            <div id="overhead-help" class="form__help">
+                                                Contoh: listrik, air, sewa pabrik, depresiasi mesin
+                                            </div>
+                                            <div id="overhead-error" class="form__error" role="alert"></div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Other Costs Section -->
+                                    <fieldset class="form__section">
+                                        <legend class="form__legend">
+                                            <i class="fas fa-plus-circle" aria-hidden="true"></i>
+                                            Biaya Lainnya
+                                            <button type="button" class="help-btn" data-tooltip="Biaya tambahan yang terkait dengan produksi" aria-label="Help for other costs">
+                                                <i class="fas fa-info-circle" aria-hidden="true"></i>
+                                            </button>
+                                        </legend>
+                                        <div class="form__group">
+                                            <label for="other-costs" class="form__label">Biaya Lainnya (Rp)</label>
+                                            <input 
+                                                type="number" 
+                                                id="other-costs" 
+                                                name="otherCosts" 
+                                                class="form__input" 
+                                                placeholder="0"
+                                                min="0"
+                                                step="0.01"
+                                                aria-describedby="other-costs-help"
+                                            >
+                                            <div id="other-costs-help" class="form__help">
+                                                Contoh: quality control, transportasi, penyimpanan
+                                            </div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Total Units Section -->
+                                    <fieldset class="form__section">
+                                        <legend class="form__legend">
+                                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                                            Jumlah Unit
+                                        </legend>
+                                        <div class="form__group">
+                                            <label for="total-units" class="form__label">
+                                                Jumlah Unit Diproduksi
+                                                <span class="form__required" aria-label="Required">*</span>
+                                            </label>
+                                            <input 
+                                                type="number" 
+                                                id="total-units" 
+                                                name="totalUnits" 
+                                                class="form__input" 
+                                                placeholder="0"
+                                                min="1"
+                                                step="1"
+                                                required
+                                                aria-describedby="total-units-error total-units-help"
+                                            >
+                                            <div id="total-units-help" class="form__help">
+                                                Masukkan jumlah unit yang diproduksi
+                                            </div>
+                                            <div id="total-units-error" class="form__error" role="alert"></div>
+                                        </div>
+                                    </fieldset>
+
+                                    <!-- Form Actions -->
+                                    <div class="form__actions">
+                                        <button type="submit" class="btn btn--primary btn--large">
+                                            <i class="fas fa-calculator" aria-hidden="true"></i>
+                                            Hitung HPP
+                                        </button>
+                                        <button type="reset" class="btn btn--secondary btn--large">
+                                            <i class="fas fa-undo" aria-hidden="true"></i>
+                                            Reset
+                                        </button>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Results Display -->
+                    <div class="calculator__results">
+                        <div class="card">
+                            <div class="card__header">
+                                <h3 class="card__title">
+                                    <i class="fas fa-chart-pie" aria-hidden="true"></i>
+                                    Hasil Perhitungan
+                                </h3>
+                                <p class="card__subtitle">HPP dan breakdown biaya</p>
+                            </div>
+                            <div class="card__body">
+                                <div id="results-container" class="results" role="region" aria-live="polite" aria-label="Calculation results">
+                                    <div class="results__empty">
+                                        <i class="fas fa-chart-line results__empty-icon" aria-hidden="true"></i>
+                                        <p class="results__empty-text">Silakan isi form untuk melihat hasil perhitungan HPP</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- History Section -->
+            <section class="history" aria-labelledby="history-heading">
+                <div class="card">
+                    <div class="card__header">
+                        <h3 id="history-heading" class="card__title">
+                            <i class="fas fa-history" aria-hidden="true"></i>
+                            Riwayat Perhitungan
+                        </h3>
+                        <div class="card__actions">
+                            <button type="button" class="btn btn--secondary btn--small" id="clear-history">
+                                <i class="fas fa-trash" aria-hidden="true"></i>
+                                Hapus Semua
+                            </button>
+                        </div>
+                    </div>
+                    <div class="card__body">
+                        <div id="history-container" class="history__list">
+                            <div class="history__empty">
+                                <i class="fas fa-clock history__empty-icon" aria-hidden="true"></i>
+                                <p class="history__empty-text">Belum ada riwayat perhitungan</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer__content">
+                <div class="footer__info">
+                    <p>&copy; 2024 Kalkulator HPP. Dibuat untuk membantu perhitungan bisnis Anda.</p>
+                </div>
+                <div class="footer__links">
+                    <button type="button" class="footer__link" id="about-btn">Tentang</button>
+                    <button type="button" class="footer__link" id="privacy-btn">Privasi</button>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Loading Overlay -->
+    <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+        <div class="loading-spinner"></div>
+        <p class="loading-text">Memproses perhitungan...</p>
+    </div>
+
+    <!-- Toast Notifications -->
+    <div id="toast-container" class="toast-container" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Modal for Help/About -->
+    <div id="modal-overlay" class="modal-overlay" aria-hidden="true">
+        <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+            <div class="modal__header">
+                <h2 id="modal-title" class="modal__title"></h2>
+                <button type="button" class="modal__close" aria-label="Close modal">
+                    <i class="fas fa-times" aria-hidden="true"></i>
+                </button>
+            </div>
+            <div class="modal__body">
+                <div id="modal-content"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript Files -->
+    <script src="js/utils/constants.js"></script>
+    <script src="js/utils/helpers.js"></script>
+    <script src="js/utils/validation.js"></script>
+    <script src="js/utils/storage.js"></script>
+    <script src="js/components/StateManager.js"></script>
+    <script src="js/components/HPPCalculator.js"></script>
+    <script src="js/components/InputForm.js"></script>
+    <script src="js/components/ResultsDisplay.js"></script>
+    <script src="js/components/UIManager.js"></script>
+    <script src="js/components/HistoryManager.js"></script>
+    <script src="js/components/ExportManager.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
